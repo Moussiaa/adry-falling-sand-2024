@@ -41,7 +41,7 @@ public class Sand {
     public void fall() {
         // moves all sand down one square (which is in field rn).
         // if sand reaches the bottom level / hits another piece of sand it stops.
-        for (int y = 0; y < columnY; y++) {
+        for (int y = 1; y < columnY; y++) {
             for (int x = 0; x < rowX; x++) {
                 if (field[y][x] == 1 && field[y - 1][x] == 0) {
                     field[y][x] = 0;
