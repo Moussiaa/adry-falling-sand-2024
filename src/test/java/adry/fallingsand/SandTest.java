@@ -56,9 +56,9 @@ class SandTest {
     }
 
     @Test
-    public void fallOtherSand() {
+    public void fallOnOtherSand() {
         // given
-        Sand sand = new Sand();
+        Sand sand = new Sand(3,3);
         sand.put(1,1);
         sand.put(1,2);
 
@@ -69,4 +69,18 @@ class SandTest {
         assertEquals("000\n010\n010\n", sand.toString());
     }
 
+    @Test
+    // both grains of sand falling together
+    public void fallSimultaneously() {
+        // given
+        Sand sand = new Sand();
+        sand.put(1,0);
+        sand.put(1,1);
+
+        // when
+        sand.fall();
+
+        // then
+        assertEquals("000\n010\n010\n", sand.toString());
+    }
 }
