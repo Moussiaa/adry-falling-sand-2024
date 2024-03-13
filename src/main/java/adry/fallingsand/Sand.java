@@ -16,7 +16,6 @@ public class Sand {
         this.random = random;
     }
 
-
     public String toString() {
         StringBuilder builder = new StringBuilder(); // using += with a string creates a string builder
         // every time it iterates thru the loop. This is more memory efficient way to concatenate strings IN A LOOP.
@@ -78,6 +77,7 @@ public class Sand {
         }
     }
 
+    // method that adds n pieces of sand into the field in random positions
     public void randomSand(int n) {
         for (int i = 0; i < n; i++) {
             int y = random.nextInt(field.length);

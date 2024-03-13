@@ -2,7 +2,11 @@ package adry.fallingsand;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 class SandTest {
 
@@ -58,9 +62,12 @@ class SandTest {
 
     // make this into fall randomly right and left directions
     @Test
-    public void fallOnOtherSand() {
+    public void fallRandomDirectionRight() {
         // given
-        Sand sand = new Sand(3, 3);
+        Random random = mock();
+
+        doReturn(true).when(random).nextBoolean();
+        Sand sand = new Sand(3, 3, random);
         sand.put(1, 1);
         sand.put(1, 2);
 
@@ -68,7 +75,24 @@ class SandTest {
         sand.fall();
 
         // then
-        assertEquals("000\n010\n010\n", sand.toString());
+        assertEquals("000\n000\n011", sand.toString());
+    }
+
+    @Test
+    public void fallRandomDirectionLeft() {
+        // given
+        Random random = mock();
+
+        doReturn(false).when(random).nextBoolean();
+        Sand sand = new Sand(3, 3, random);
+        sand.put(1, 1);
+        sand.put(1, 2);
+
+        // when
+        sand.fall();
+
+        // then
+        assertEquals("000\n000\n110", sand.toString());
     }
 
     @Test
