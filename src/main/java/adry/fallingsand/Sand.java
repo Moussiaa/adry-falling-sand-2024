@@ -11,6 +11,7 @@ public class Sand {
         this.random = new Random();
     }
 
+    // constructor to rig random for testing purposes
     public Sand(int width, int height, Random random) {
         field = new int[height][width];
         this.random = random;
@@ -18,9 +19,9 @@ public class Sand {
 
     public String toString() {
         StringBuilder builder = new StringBuilder(); // using += with a string creates a string builder
-        // every time it iterates thru the loop. This is more memory efficient way to concatenate strings IN A LOOP.
+        // every time it iterates through the loop. This is more memory efficient way to concatenate strings IN A LOOP.
 
-        for (int y = 0; y < field.length; y++) {   // this is y axis bc it runs downwards
+        for (int y = 0; y < field.length; y++) {   // this is y-axis bc it runs downwards
             for (int x = 0; x < field[y].length; x++) {   // and here is x that runs horizontally
                 builder.append(field[y][x]);
             }
@@ -40,7 +41,21 @@ public class Sand {
     }
 
     /**
-     * @sets the value in field to be 1 instead of defaulting to 0.
+     * @return the field
+     */
+    public int[][] getField() {
+        return field;
+    }
+
+    /**
+     * reports whether a given position is filled
+     */
+    public boolean position(int x, int y) {
+        return field[y][x] == 1;
+    }
+
+    /**
+     * sets the value in field to be 1 instead of defaulting to 0.
      */
     public void put(int x, int y) {
         field[y][x] = 1;
@@ -60,14 +75,17 @@ public class Sand {
                     }
 
                     boolean rightFirst = random.nextBoolean();
-                    int direction1 = rightFirst ? +1 : -1;
-                    int direction2 = rightFirst ? -1 : +1;
+                    int direction1 = rightFirst ? +1 : -1; // ternary operator => 'condition' ? true : false
+                    int direction2 = rightFirst ? -1 : +1; // if true move left
 
-                    if (field[y + 1][x + direction1] == 0) {
+                    // check that sand remains in bounds for x and y dimensions, as well as below
+                    if (x + direction1 >= 0 && x + direction1 <= field[y].length
+                            && field[y + 1][x + direction1] == 0) {
                         // does the sand fall to the right?
                         field[y][x] = 0;
                         field[y + 1][x + direction1] = 1;
-                    } else if (field[y + 1][x + direction2] == 0) {
+                    } else if (x + direction2 >= 0 && x + direction2 <= field[y].length
+                            && field[y + 1][x + direction2] == 0) {
                         // does the sand fall to the left?
                         field[y][x] = 0;
                         field[y + 1][x + direction2] = 1;
