@@ -76,7 +76,7 @@ class SandTest {
         sand.fall();
 
         // then
-        assertEquals("000\n000\n011", sand.toString());
+        assertEquals("000\n000\n111\n", sand.toString());
     }
 
     @Test
