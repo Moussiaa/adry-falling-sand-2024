@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SandFrame extends JFrame {
-    private final Sand sand = new Sand(300, 400);
+
+    private final Sand sand = new Sand(500, 500);
 
     public SandFrame() {
         setSize(800, 600);
@@ -13,7 +14,7 @@ public class SandFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        sand.randomSand(4000);
+        sand.randomSand(5000);
 
         SandComponent sandComponent = new SandComponent(sand);
         add(sandComponent, BorderLayout.CENTER);
