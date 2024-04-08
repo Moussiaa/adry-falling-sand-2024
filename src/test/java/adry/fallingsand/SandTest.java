@@ -93,7 +93,7 @@ class SandTest {
         sand.fall();
 
         // then
-        assertEquals("000\n000\n110", sand.toString());
+        assertEquals("000\n000\n110\n", sand.toString());
     }
 
     @Test
@@ -170,7 +170,7 @@ class SandTest {
     @Test
     public void load() {
         // given
-        Sand sand = new Sand(2, 2);
+        Sand sand = new Sand(3, 3);
 
         // when
         sand.load("000\n010\n000\n");
