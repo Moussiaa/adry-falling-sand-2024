@@ -54,16 +54,18 @@ public class Sand {
      *
      * @param startX      centerX
      * @param startY      centerY
-     * @param width
+     * @param width       the radius of the circle
      * @param height      the radius of the circle
      * @param probability that an empty spot in the circle will be sand.
      */
     public void put(int startX, int startY, int width, int height, double probability) {
-        // starting at x, y to x + width and y+ height, set each item in field to be a sand if random.nextDouble() < probability
+        // starting at x, y to x + width and y+ height, set each item in field to be
+        // a sand if random.nextDouble() < probability
         for (int y = startY; y < startY + width; y++) {
             for (int x = startX; x < startX + height; x++) {
-                if (random.nextDouble() <= probability)
+                if (random.nextDouble() <= probability) {
                     put(x, y);
+                }
             }
         }
     }
@@ -205,80 +207,6 @@ public class Sand {
         }
         field = fieldResize;
     }
-
-//    /**
-//     * Moves all sand down one square if there is space
-//     */
-//  /* public void fall() {
-//        for (int y = field.length - 2; y >= 0; y--) {
-//            for (int x = 0; x < field[y].length; x++) {
-//                if (isSand(x, y)) {
-//                    moveSandDown(x, y);
-//                }
-//            }
-//        }
-//    }
-//
-//    /**
-//     * reports whether a given position is filled
-//     */
-//    public boolean position(int x, int y) {
-//        return isSand(y, x);
-//    }
-//
-//
-//    public void move(int x1, int y1, int x2, int y2) {
-//        if (isSand(x1, y1) && inBounds(x2, y2) && !isSand(x2, y2)) {
-//            field[y1][x1] = 0;
-//            field[y2][x2] = 1;
-//            return true;
-//        }
-//        return false;
-//    }
-//
-//    public boolean inBounds(int x, int y) {
-//
-//    }
-//
-//    public void fall() {
-//        // moves all sand down one square (which is in field rn).
-//        // if sand reaches the bottom level / hits another piece of sand it stops.
-//        for (int y = field.length - 2; y >= 0; y--) {
-//            for (int x = 0; x < field[y].length; x++) {
-//                if (isSand(x, y)) {
-//                    // sand falling straight down
-//                    if (!isSand(x, y + 1)) {
-//                        move(x, y, x, y + 1);
-//                        continue;
-//                    }
-//
-//                    // ALL GOES IN THE MOVE METHOD
-//                    boolean rightFirst = random.nextBoolean();
-//                    int direction1 = rightFirst ? +1 : -1; // ternary operator => 'condition' ? true : false
-//                    int direction2 = rightFirst ? -1 : +1; // if true move left
-//
-//                    // check that sand remains in bounds for x and y dimensions, as well as below
-//                    if (x + direction1 >= 0 && x + direction1 <= field[y].length
-//                            && field[y + 1][x + direction1] == 0) {
-//                        // does the sand fall to the right?
-//                        field[y][x] = 0;
-//                        field[y + 1][x + direction1] = 1;
-//                    } else if (x + direction2 >= 0 && x + direction2 <= field[y].length
-//                            && field[y + 1][x + direction2] == 0) {
-//                        // does the sand fall to the left?
-//                        move(x, y, x + direction1, y);
-//                        field[y][x] = 0;
-//                        field[y + 1][x + direction2] = 1;
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    private boolean isSand(int y, int x) {
-//        return field[y][x] == 1;
-//    }
-
 }
 
 
