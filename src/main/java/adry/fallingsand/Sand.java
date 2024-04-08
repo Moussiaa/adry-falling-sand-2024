@@ -94,20 +94,6 @@ public class Sand {
             }
         }
     }
-//        String[] rows = sandString.split("\n");
-//
-//        for (int i = 0; i < rows.length; i++) {
-//            String newRow = rows[y];
-//            for (int s = 0; s < newRow.length(); s++) {
-//                char index = newRow.charAt(x);
-//                if (index == 1) {
-//                    field[y][x] = 1;
-//                } else {
-//                    field[y][x] = 0;
-//                }
-//            }
-//        }
-//    }
 
     public String toString() {
         StringBuilder builder = new StringBuilder(); // using += with a string creates a string builder
